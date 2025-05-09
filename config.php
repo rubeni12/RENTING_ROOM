@@ -31,11 +31,11 @@ mysqli_select_db($conn, $dbname);
 
 
 $table_create_query = "CREATE TABLE IF NOT EXISTS users (
-  id INT(255) AUTO_INCREMENT PRIMARY KEY,
-  fullname VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  contact VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL
+    id INT(255) AUTO_INCREMENT PRIMARY KEY,
+    fullname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    contact VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
 )";
 
 
@@ -47,11 +47,11 @@ if (!mysqli_query($conn, $table_create_query)) {
 }
 
 $booking = "CREATE TABLE IF NOT EXISTS bookings (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT(255) AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
-    booking_date DATE NOT NULL,    
+    booking_date DATE NOT NULL,
     user_id INT(255) NOT NULL,
-    FOREIGN KEY user_id REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 )";
 
 if (!mysqli_query($conn, $booking)) {
@@ -64,12 +64,12 @@ if (!mysqli_query($conn, $booking)) {
 
 
 $room = "CREATE TABLE IF NOT EXISTS room (
-room_id INT(255) AUT0_INCREMENT PRIMARY KEY,
+room_id INT(255) AUTO_INCREMENT PRIMARY KEY,
 room_image_url VARCHAR(255) NOT NULL,
 room_number INT(255) NOT NULL UNIQUE,
 room_description TEXT NOT NULL,
 location VARCHAR(255) NOT NULL,
-room_cost DECIMAL(255,2) NOT NULL,
+room_cost DECIMAL(65,2) NOT NULL
 )";
 
 if (!mysqli_query($conn, $room)) {
