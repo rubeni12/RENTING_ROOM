@@ -32,6 +32,7 @@ mysqli_select_db($conn, $dbname);
 
 $table_create_query = "CREATE TABLE IF NOT EXISTS users (
     id INT(255) AUTO_INCREMENT PRIMARY KEY,
+    -- user_id VARCHAR(255) NOT NULL UNIQUE,
     fullname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     contact VARCHAR(255) NOT NULL UNIQUE,
@@ -78,5 +79,4 @@ if (!mysqli_query($conn, $room)) {
     mysqli_close($conn);
     exit;
 }
-
 ?>
